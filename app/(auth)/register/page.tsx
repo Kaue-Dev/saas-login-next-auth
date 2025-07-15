@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import Form from "next/form";
+import registerAction from "./register-action";
 
 export default function RegisterPage() {
   return (
@@ -13,25 +15,29 @@ export default function RegisterPage() {
           <CardDescription>Please fill out the form below to create a new account.</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <Form action={registerAction}>
             <div className="space-y-2">
+              <Label htmlFor="username">Username</Label>
+              <Input type="text" id="username" name="username" />
+            </div>
+            <div className="space-y-2 mt-4">
               <Label htmlFor="email">E-mail</Label>
-              <Input type="text" id="email" name="email" />
+              <Input type="email" id="email" name="email" />
             </div>
             <div className="space-y-2 mt-4">
               <Label htmlFor="password">Password</Label>
               <Input type="password" id="password" name="password" />
             </div>
             <div className="space-y-2 mt-4">
-              <Label htmlFor="confirm-password">Confirm Password</Label>
-              <Input type="password" id="confirm-password" name="confirm-password" />
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Input type="password" id="confirmPassword" name="confirmPassword" />
             </div>
-          </form>
+            <div className="mt-6 text-center">
+              <Button type="submit" className="w-full cursor-pointer">Register</Button>
+              <Button variant="link"><Link href="/">Already have an account? Log in</Link></Button>
+            </div>
+          </Form>
         </CardContent>
-        <CardFooter className="flex flex-col">
-          <Button type="submit" className="w-full cursor-pointer">Register</Button>
-          <Button variant="link"><Link href="/">Already have an account? Log in</Link></Button>
-        </CardFooter>
       </Card>
     </>
   );
