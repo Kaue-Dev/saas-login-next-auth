@@ -17,8 +17,8 @@ export default function RegisterPage() {
         <CardContent>
           <Form action={registerAction}>
             <div className="space-y-2">
-              <Label htmlFor="username">Username</Label>
-              <Input type="text" id="username" name="username" />
+              <Label htmlFor="name">Name</Label>
+              <Input type="text" id="name" name="name" />
             </div>
             <div className="space-y-2 mt-4">
               <Label htmlFor="email">E-mail</Label>
