@@ -31,7 +31,7 @@ Um sistema completo de autenticação desenvolvido com Next.js 15, NextAuth.js, 
 ### 1. Clone o repositório
 
 ```bash
-git clone <https://github.com/Kaue-Dev/saas-login-next-auth.git>
+git clone https://github.com/Kaue-Dev/saas-login-next-auth.git
 cd saas-login-next-auth
 ```
 
