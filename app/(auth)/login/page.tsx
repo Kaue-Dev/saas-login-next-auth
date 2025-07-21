@@ -1,10 +1,15 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Link from "next/link";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { LoginForm } from "./login-form";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const session = await auth();
+
+  if (session) {
+    return redirect("/")
+  }
+
   return (
     <>
       <Card className="w-full max-w-xl">
@@ -13,21 +18,8 @@ export default function LoginPage() {
           <CardDescription>Please enter your credentials to log in to your account.</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
-            <div className="space-y-2">
-              <Label htmlFor="email">E-mail</Label>
-              <Input type="text" id="email" name="email" />
-            </div>
-            <div className="space-y-2 mt-4">
-              <Label htmlFor="password">Password</Label>
-              <Input type="password" id="password" name="password" />
-            </div>
-          </form>
+          <LoginForm />
         </CardContent>
-        <CardFooter className="flex flex-col">
-          <Button type="submit" className="w-full cursor-pointer">Login</Button>
-          <Button variant="link"><Link href="/">Don't have an account? Register now</Link></Button>
-        </CardFooter>
       </Card>
     </>
   );
